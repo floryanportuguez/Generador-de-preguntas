@@ -1,44 +1,53 @@
-# OpenAI API Quickstart - Node.js example app
+# OpenAI API Generador-Preguntas - Node.js example app
 
-This is an example pet name generator app used in the OpenAI API [quickstart tutorial](https://platform.openai.com/docs/quickstart). It uses the [Next.js](https://nextjs.org/) framework with [React](https://reactjs.org/). Check out the tutorial or follow the instructions below to get set up.
+Esto es un ejemplo de una app generadora de preguntas. Siga las instrucciones a continuación para configurarlo.
 
-![Text box that says name my pet with an icon of a dog](https://user-images.githubusercontent.com/10623307/213887080-b2bc4645-7fdb-4dbd-ae42-efce00d0dc29.png)
+![Imagen de como se ve la app](/mi-generador/public/Img.png)
 
 
 ## Setup
 
-1. If you don’t have Node.js installed, [install it from here](https://nodejs.org/en/) (Node.js version >= 14.6.0 required)
+1. Si no tiene instalado Node.js, instalelo desde aqui (https://nodejs.org/en/) (se requiere la versión de Node.js >= 14.6.0)
 
-2. Clone this repository
+2. Clonar este repositorio
 
-3. Navigate into the project directory
+3. Navegar al directorio del proyecto
 
    ```bash
    $ cd openai-quickstart-node
    ```
 
-4. Install the requirements
+4. Instalar los requisitos
 
    ```bash
    $ npm install
    ```
 
-5. Make a copy of the example environment variables file
+5. Haga una copia del archivo de variables de entorno de ejemplo
 
-   On Linux systems: 
+ En sistemas Linux:
    ```bash
    $ cp .env.example .env
    ```
-   On Windows:
+   En windows:
    ```powershell
    $ copy .env.example .env
    ```
-6. Add your [API key](https://platform.openai.com/account/api-keys) to the newly created `.env` file
 
-7. Run the app
+6. Agregue su [API key](https://platform.openai.com/account/api-keys) al .env archivo recién creado
+
+7. Ejecute la aplicación
 
    ```bash
    $ npm run dev
    ```
 
-You should now be able to access the app at [http://localhost:3000](http://localhost:3000)! For the full context behind this example app, check out the [tutorial](https://platform.openai.com/docs/quickstart).
+¡Ahora debería poder acceder a la aplicación en http://localhost:3000 ! 
+
+# Generador de Preguntas con GPT-3
+
+Este proyecto se basa en utilizar la API GPT de OpenAI. Para crear un generador de preguntas utilizando GPT-3. Sigue los pasos anteriores para configurar el proyecto y ejecutar la aplicación.
+
+Una vez que la aplicación esté en funcionamiento, podrás ingresar un tema en el cuadro de texto y hacer clic en "Generar preguntas" para obtener una lista de preguntas generadas por GPT-3 relacionadas con ese tema.
+
+¡Diviértete explorando el generador de preguntas con GPT-3!
