@@ -1,3 +1,4 @@
+"use client"
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
@@ -12,7 +13,7 @@ export default function Home() {
     event.preventDefault();
     try {
       if (showAbout) {
-        return; // Return early if "Acerca de" is shown
+        return;
       }
 
       const response = await fetch("/api/generate", {
@@ -32,7 +33,6 @@ export default function Home() {
       setTopicInput("");
       setShowAnswers(true);
     } catch (error) {
-      // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
@@ -45,6 +45,18 @@ export default function Home() {
   function handleBackClick() {
     setShowAbout(false);
     setShowAnswers(false);
+  }
+
+  function copyQuestions() {
+    const textToCopy = questions.join("\n");
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        alert("¡Preguntas copiadas al portapapeles!");
+      })
+      .catch((error) => {
+        console.error("Error al copiar las preguntas:", error);
+        alert("Error al copiar las preguntas. Por favor, inténtalo de nuevo.");
+      });
   }
 
   return (
@@ -84,7 +96,7 @@ export default function Home() {
                 value="Generar Preguntas"
                 disabled={showAbout}
               />
-              <button className={styles.aboutButton} onClick={handleAboutClick}>Acerca de</button>
+              <button className={styles.aboutButton} onClick={handleAboutClick}>Acerda de</button>
             </form>
           </div>
         )}
@@ -96,6 +108,7 @@ export default function Home() {
                 <li key={index}>{question}</li>
               ))}
             </ul>
+            <button onClick={copyQuestions}>Copiar</button>
           </div>
         )}
       </main>
