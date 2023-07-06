@@ -1,14 +1,35 @@
+/**
+ * Aplicación GPTFLO - Generador de Preguntas
+ *
+ * Este componente representa la página principal de la aplicación web GPTFLO.
+ * Permite a los usuarios ingresar un tema y generar preguntas relacionadas utilizando el modelo GPT de OpenAI.
+ *
+ * Dependencias:
+ * - next/head: componente de Next.js para manipular el encabezado del documento HTML.
+ * - react: biblioteca de React para construir interfaces de usuario.
+ * - styles: módulo CSS para estilos específicos de la página.
+ */
+
+
 "use client"
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
 
+// Estado y variables de la aplicación
 export default function Home() {
   const [topicInput, setTopicInput] = useState("");
   const [questions, setQuestions] = useState([]);
   const [showAbout, setShowAbout] = useState(false);
   const [showAnswers, setShowAnswers] = useState(false);
 
+
+/**
+   * Maneja el envío del formulario para generar preguntas.
+   * Envía una solicitud POST al servidor para generar preguntas relacionadas al tema ingresado.
+   *
+   * @param {Event} event Evento de envío del formulario.
+   */
   async function onSubmit(event) {
     event.preventDefault();
     try {
@@ -38,15 +59,28 @@ export default function Home() {
     }
   }
 
+  /**
+   * Maneja el clic en el botón "Acerca de".
+   * Muestra la sección de información "Acerca de" en lugar del formulario principal.
+   */
   function handleAboutClick() {
     setShowAbout(true);
   }
 
+  /**
+   * Maneja el clic en el botón "Atrás".
+   * Oculta la sección de información "Acerca de" y las respuestas generadas.
+   */
   function handleBackClick() {
     setShowAbout(false);
     setShowAnswers(false);
   }
 
+  /**
+   * Copia las preguntas generadas al portapapeles del usuario.
+   * Utiliza la API del portapapeles del navegador para realizar la copia.
+   * Muestra una alerta con el resultado de la operación.
+   */
   function copyQuestions() {
     const textToCopy = questions.join("\n");
     navigator.clipboard.writeText(textToCopy)
@@ -58,9 +92,13 @@ export default function Home() {
         alert("Error al copiar las preguntas. Por favor, inténtalo de nuevo.");
       });
   }
-
+/* se encuentra el encabezado de la pagina
+el formulario principal
+las respuestas generadas
+y por ultimo el pie de pagina*/
   return (
     <div>
+      
       <Head>
         <title>GPTFLO</title>
         <link rel="icon" href="/LogoGPT.png" />
